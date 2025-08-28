@@ -70,7 +70,7 @@ p {
 <p>愿你每一天都被爱包围，笑容像阳光一样灿烂 🌸</p>
 
 <!-- 音乐 -->
-<audio id="bgm" loop>
+<audio id="bgm" loop playsinline>
   <source src="zuichibi.mp3" type="audio/mpeg">
   您的浏览器不支持音频播放。
 </audio>
@@ -91,15 +91,17 @@ const createHeart = (x=null, y=null) => {
 // 页面初始漂浮心
 for (let i = 0; i < 20; i++) createHeart();
 
-// 点击生成更多心
+let musicStarted = false;
 document.body.addEventListener('click', (e) => {
+    // 生成漂浮心
     for (let i = 0; i < 5; i++) {
         createHeart(e.clientX + (Math.random()*30-15), e.clientY + (Math.random()*30-15));
     }
-    // 点击播放音乐（兼容手机/浏览器自动播放限制）
-    const audio = document.getElementById('bgm');
-    if (audio.paused) {
-        audio.play();
+    // 第一次点击播放音乐
+    if (!musicStarted) {
+        const audio = document.getElementById('bgm');
+        audio.play().catch(err => console.log("播放失败：", err));
+        musicStarted = true;
     }
 });
 </script>
