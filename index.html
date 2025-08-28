@@ -50,6 +50,15 @@
         <source src="zui_chi_bi-lin_jun_jie-4299.mp3" type="audio/mpeg">
         您的浏览器不支持音频播放。
     </audio>
+    <script>
+  let played = false;
+  document.body.addEventListener('click', () => {
+    if (!played) {
+      document.getElementById('bgm').play();
+      played = true;
+    }
+  });
+</script>
 
     <script>
         const createHeart = (x=null, y=null) => {
@@ -72,5 +81,6 @@
     </script>
 </body>
 </html>
+
 
 
