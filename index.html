@@ -59,6 +59,17 @@ p {
 .heart::before { top: -10px; left: 0; }
 .heart::after { top: 0; left: 10px; }
 
+#tip {
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+    color: #fff;
+    text-shadow: 1px 1px 6px #ff1493;
+    opacity: 0.9;
+}
+
 @keyframes float {
     0% { transform: translateY(0) rotate(-45deg); opacity: 1;}
     100% { transform: translateY(-800px) rotate(-45deg); opacity: 0;}
@@ -68,6 +79,7 @@ p {
 <body>
 <h1>七夕快乐，wuli瑶宝！❤️</h1>
 <p>愿你每一天都被爱包围，笑容像阳光一样灿烂 🌸</p>
+<div id="tip">点击任意位置播放音乐 🎵</div>
 
 <!-- 音乐 -->
 <audio id="bgm" loop playsinline>
@@ -102,6 +114,8 @@ document.body.addEventListener('click', (e) => {
         const audio = document.getElementById('bgm');
         audio.play().catch(err => console.log("播放失败：", err));
         musicStarted = true;
+        // 隐藏提示文字
+        document.getElementById('tip').style.display = 'none';
     }
 });
 </script>
